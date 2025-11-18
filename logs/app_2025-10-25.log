@@ -1,0 +1,196 @@
+2025-10-25 17:02:45 | ERROR    | core.knowledge_base:query_datasets:89 - 查询知识库数据集失败: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/core/dataset/list (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EEADEB4690>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+2025-10-25 17:02:45 | DEBUG    | core.knowledge_base:query_datasets:90 - Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 494, in request
+    self.endheaders()
+  File "C:\Users\EDY\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1298, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\EDY\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1058, in _send_output
+    self.send(msg)
+  File "C:\Users\EDY\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 996, in send
+    self.connect()
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001EEADEB4690>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/core/dataset/list (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EEADEB4690>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\core\knowledge_base.py", line 75, in query_datasets
+    response = requests.post(url=url, headers=self.headers, verify=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/core/dataset/list (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EEADEB4690>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+2025-10-25 17:02:45 | INFO     | __main__:main:88 - 创建数据集: company_info
+2025-10-25 17:02:49 | ERROR    | core.knowledge_base:create_dataset:61 - 创建知识库数据集失败: company_info, 错误: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/core/dataset/create (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EEAE7F3150>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+2025-10-25 17:02:53 | ERROR    | core.knowledge_base:query_datasets:89 - 查询知识库数据集失败: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/core/dataset/list (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EEAE8152D0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+2025-10-25 17:02:53 | DEBUG    | core.knowledge_base:query_datasets:90 - Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 494, in request
+    self.endheaders()
+  File "C:\Users\EDY\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1298, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\EDY\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1058, in _send_output
+    self.send(msg)
+  File "C:\Users\EDY\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 996, in send
+    self.connect()
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001EEAE8152D0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/core/dataset/list (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EEAE8152D0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\workspace\5-fastGPT-tianyancha\core\knowledge_base.py", line 75, in query_datasets
+    response = requests.post(url=url, headers=self.headers, verify=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\workspace\5-fastGPT-tianyancha\.venv\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/core/dataset/list (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EEAE8152D0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+2025-10-25 17:02:53 | ERROR    | __main__:main:111 - 未配置公司名称或文件路径，请检查配置文件
+2025-10-25 17:03:41 | INFO     | __main__:main:88 - 创建数据集: company_info
+2025-10-25 17:03:41 | ERROR    | __main__:main:111 - 未配置公司名称或文件路径，请检查配置文件
+2025-10-25 17:07:17 | INFO     | __main__:main:106 - 从文件中读取了10家公司
+2025-10-25 17:07:17 | INFO     | __main__:main:116 - 开始处理公司: 湖南汉康生物医药有限公司
+2025-10-25 17:07:17 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南汉康生物医药有限公司成立于2018年2月2日，位于长沙高新开发区麓松路459号东方红小区延农综合...
+2025-10-25 17:07:17 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南汉康生物医药有限公司_BX6J
+2025-10-25 17:07:17 | INFO     | __main__:main:130 - 成功处理公司: 湖南汉康生物医药有限公司
+2025-10-25 17:07:17 | DEBUG    | __main__:main:136 - 等待 4.94 秒...
+2025-10-25 17:07:22 | INFO     | __main__:main:116 - 开始处理公司: 湖南思创节能技术有限公司
+2025-10-25 17:07:22 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南思创节能技术有限公司成立于2017年12月15日，位于长沙高新开发区岳麓西大道560号荣盛花语馨...
+2025-10-25 17:07:23 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南思创节能技术有限公司_52k1
+2025-10-25 17:07:23 | INFO     | __main__:main:130 - 成功处理公司: 湖南思创节能技术有限公司
+2025-10-25 17:07:23 | DEBUG    | __main__:main:136 - 等待 2.90 秒...
+2025-10-25 17:07:25 | INFO     | __main__:main:116 - 开始处理公司: 湖南泊湾科技有限公司
+2025-10-25 17:07:26 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南泊湾科技有限公司成立于2017年4月18日，位于湖南省长沙市岳麓区天顶街道麓云路268号金悦雅苑...
+2025-10-25 17:07:26 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南泊湾科技有限公司_3v5l
+2025-10-25 17:07:26 | INFO     | __main__:main:130 - 成功处理公司: 湖南泊湾科技有限公司
+2025-10-25 17:07:26 | DEBUG    | __main__:main:136 - 等待 1.07 秒...
+2025-10-25 17:07:27 | INFO     | __main__:main:116 - 开始处理公司: 湖南东华云通软件有限公司
+2025-10-25 17:07:27 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南东华云通软件有限公司成立于2017年1月16日，位于长沙高新开发区麓谷基地麓天路8号004栋41...
+2025-10-25 17:07:27 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南东华云通软件有限公司_Wcql
+2025-10-25 17:07:27 | INFO     | __main__:main:130 - 成功处理公司: 湖南东华云通软件有限公司
+2025-10-25 17:07:27 | DEBUG    | __main__:main:136 - 等待 4.30 秒...
+2025-10-25 17:07:32 | INFO     | __main__:main:116 - 开始处理公司: 长沙丹渥智能科技有限公司
+2025-10-25 17:07:32 | INFO     | __main__:process_company:47 - 生成知识库文本: 长沙丹渥智能科技有限公司成立于2018年10月16日，位于湖南省长沙市岳麓山大学科技城岳麓街道靳江路...
+2025-10-25 17:07:32 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 长沙丹渥智能科技有限公司_cHsk
+2025-10-25 17:07:32 | INFO     | __main__:main:130 - 成功处理公司: 长沙丹渥智能科技有限公司
+2025-10-25 17:07:32 | DEBUG    | __main__:main:136 - 等待 2.63 秒...
+2025-10-25 17:07:35 | INFO     | __main__:main:116 - 开始处理公司: 湖南国一工程有限公司
+2025-10-25 17:07:35 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南国一工程有限公司成立于2015年6月9日，位于长沙高新开发区谷苑路229号海凭园生产厂房六101...
+2025-10-25 17:07:35 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南国一工程有限公司_zRXA
+2025-10-25 17:07:35 | INFO     | __main__:main:130 - 成功处理公司: 湖南国一工程有限公司
+2025-10-25 17:07:35 | DEBUG    | __main__:main:136 - 等待 3.33 秒...
+2025-10-25 17:07:38 | INFO     | __main__:main:116 - 开始处理公司: 湖南瑞桓科技产品有限公司
+2025-10-25 17:07:39 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南瑞桓科技产品有限公司成立于2013年11月12日，位于湖南省长沙市岳麓区学士街道玉莲路32号联东...
+2025-10-25 17:07:39 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南瑞桓科技产品有限公司_KSjE
+2025-10-25 17:07:39 | INFO     | __main__:main:130 - 成功处理公司: 湖南瑞桓科技产品有限公司
+2025-10-25 17:07:39 | DEBUG    | __main__:main:136 - 等待 1.59 秒...
+2025-10-25 17:07:40 | INFO     | __main__:main:116 - 开始处理公司: 长沙智迪信息技术有限公司
+2025-10-25 17:07:41 | INFO     | __main__:process_company:47 - 生成知识库文本: 长沙智迪信息技术有限公司成立于2011年3月24日，位于湖南省长沙市岳麓区学士街道学士路336号湖南...
+2025-10-25 17:07:41 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 长沙智迪信息技术有限公司_pkFz
+2025-10-25 17:07:41 | INFO     | __main__:main:130 - 成功处理公司: 长沙智迪信息技术有限公司
+2025-10-25 17:07:41 | DEBUG    | __main__:main:136 - 等待 4.23 秒...
+2025-10-25 17:07:45 | INFO     | __main__:main:116 - 开始处理公司: 湖南星泽电力建设有限公司
+2025-10-25 17:07:46 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南星泽电力建设有限公司成立于2010年11月18日，位于长沙高新开发区麓谷大道627号新长海麓谷中...
+2025-10-25 17:07:46 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南星泽电力建设有限公司_resz
+2025-10-25 17:07:46 | INFO     | __main__:main:130 - 成功处理公司: 湖南星泽电力建设有限公司
+2025-10-25 17:07:46 | DEBUG    | __main__:main:136 - 等待 4.41 秒...
+2025-10-25 17:07:50 | INFO     | __main__:main:116 - 开始处理公司: 湖南中嘉生物医药有限公司
+2025-10-25 17:07:50 | INFO     | __main__:process_company:47 - 生成知识库文本: 湖南中嘉生物医药有限公司成立于2007年11月26日，位于湖南省长沙市岳麓区学士街道崐玉路115号达...
+2025-10-25 17:07:50 | INFO     | core.knowledge_base:create_text_collection:117 - 创建文本集合成功: 湖南中嘉生物医药有限公司_CADv
+2025-10-25 17:07:50 | INFO     | __main__:main:130 - 成功处理公司: 湖南中嘉生物医药有限公司
+2025-10-25 17:07:50 | DEBUG    | __main__:main:136 - 等待 2.27 秒...

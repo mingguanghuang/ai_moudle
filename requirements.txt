@@ -1,0 +1,6 @@
+pymysql==1.1.1
+dbutils==3.1.0
+requests==2.32.3
+lxml==5.3.0
+loguru==0.7.3
+python-dotenv==1.0.0
