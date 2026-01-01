@@ -1,0 +1,49 @@
+import time
+import json
+from fastapi import FastAPI, HTTPException
+from loguru import logger
+from pydantic import BaseModel
+from langchain_core.tracers.stdout import elapsed
+from pydantic import BaseModel
+from fastapi.responses import FileResponse
+from utils.logger import setup_logger
+from agent_pro.agent import Agent
+from models.models import Models,ALI_TONGYI_DEEPSEEK_V3_2,ALI_TONGYI_DEEPSEEK_V3
+
+
+app = FastAPI()
+class ChatRequest(BaseModel):
+    # model: str = ALI_TONGYI_DEEPSEEK_V3
+    user_prompt: str
+
+@app.get("/")
+async def read_index():
+    return FileResponse("index.html")
+
+@app.post("/chat")
+def chat(request: ChatRequest):
+
+    try:
+        start = time.time()
+        # model = request.model
+        user_prompt = request.user_prompt
+        my_agent = Agent(ALI_TONGYI_DEEPSEEK_V3_2,user_prompt)
+        result = my_agent.agent_run_parse()
+        print(result)
+        elapse = time.time() - start
+        logger.info(f"成功处理请求，耗时{elapse:.2f}秒")
+        return {
+            "success": True,
+            "processing_time": f"{elapse:.2f}s",
+            "result": result
+        }
+    except Exception as e:
+        logger.error(f"处理请求时出错: {e}")
+        return {
+            "success": False,
+            "error": str(e)
+        }
+if __name__ == "__main__":
+    setup_logger()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
