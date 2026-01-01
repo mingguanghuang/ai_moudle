@@ -2,3 +2,5 @@
 .venv
 logs
 index.html
+__pycache__
+*.pyc
