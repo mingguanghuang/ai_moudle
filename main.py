@@ -9,7 +9,7 @@ from fastapi.responses import FileResponse
 from utils.logger import setup_logger
 from agent_pro.agent import Agent
 from models.models import Models,ALI_TONGYI_DEEPSEEK_V3_2,ALI_TONGYI_DEEPSEEK_V3
-
+from utils.mqtt_client import MQTTClient
 
 app = FastAPI()
 class ChatRequest(BaseModel):
