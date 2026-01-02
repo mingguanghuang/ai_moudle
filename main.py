@@ -13,21 +13,21 @@ from models.models import Models,ALI_TONGYI_DEEPSEEK_V3_2,ALI_TONGYI_DEEPSEEK_V3
 
 app = FastAPI()
 class ChatRequest(BaseModel):
-    # model: str = ALI_TONGYI_DEEPSEEK_V3
-    user_prompt: str
-
+    model: str = ALI_TONGYI_DEEPSEEK_V3
+    message: str
+#前端测试页面,这里你可以自己定义测试页面
 @app.get("/")
 async def read_index():
     return FileResponse("index.html")
 
-@app.post("/chat")
+@app.post("/api/chat")
 def chat(request: ChatRequest):
 
     try:
         start = time.time()
-        # model = request.model
-        user_prompt = request.user_prompt
-        my_agent = Agent(ALI_TONGYI_DEEPSEEK_V3_2,user_prompt)
+        model = request.model
+        user_prompt = request.message
+        my_agent = Agent(model,user_prompt)
         result = my_agent.agent_run_parse()
         print(result)
         elapse = time.time() - start
