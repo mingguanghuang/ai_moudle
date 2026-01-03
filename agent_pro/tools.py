@@ -3,7 +3,7 @@ import json
 import uuid
 
 from loguru import logger
-from utils.mqtt_client import mqtt_client, mqtt_client_with_topic_chen
+from utils.mqtt_client import mqtt_client, MQTTClient
 import datetime
 import requests
 import json
@@ -129,7 +129,7 @@ class Tools:
         try:
             # 发送MQTT消息
             message_id = "message_voice"
-            success = mqtt_client_with_topic_chen.send_message(
+            success = mqtt_client.send_message(
                 command="VOICE_SHUTDOWN",
                 parameters={},
                 message_id=message_id
@@ -145,7 +145,7 @@ class Tools:
 
     @staticmethod
     @tool
-    def display_text(content: any) -> str:
+    def display_text(content: int|str) -> str:
         """数字、字符显示: 显示数字或字符。
         
         Args:
@@ -155,11 +155,13 @@ class Tools:
             # 发送MQTT消息
             if type(content) == int:
                 message_id = "message_007"
+                params = {"display_num": content}
             else:
                 message_id = "message_008"
+                params = {"display_str": content}
             success = mqtt_client.send_message(
                 command="DISPLAY_CONTROL",
-                parameters={"display_str": content},
+                parameters=params,
                 message_id=message_id
             )
             

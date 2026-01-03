@@ -85,4 +85,3 @@ class MQTTClient:
 
 
 mqtt_client = MQTTClient()
-mqtt_client_with_topic_chen = MQTTClient(topic="chenkaijie")
