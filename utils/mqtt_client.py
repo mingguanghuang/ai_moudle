@@ -84,4 +84,4 @@ class MQTTClient:
             logger.info("MQTT客户端已断开连接")
 
 
-mqtt_client = MQTTClient()
+

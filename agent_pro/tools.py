@@ -1,25 +1,24 @@
 from langchain.tools import tool
 import json
 import uuid
-
 from loguru import logger
-from utils.mqtt_client import mqtt_client, MQTTClient
+from utils.mqtt_client import   MQTTClient
 import datetime
 import requests
 import json
 
-
+mqtt_client = MQTTClient()
 class Tools:
     def __init__(self):
         pass
 
     @staticmethod
-    @tool
+
     def control_led(led_id: int = 1, action: str = "on") -> str:
         """LED灯控制: 打开或关闭设备的LED灯。
         
         Args:
-            led_id: LED灯身份标识，可选值为"1"、"2"、"3"等数字,"1"表示LED灯1，"2"表示LED灯2，"3"表示LED灯3等等根据实际情况来
+            led_id: LED灯身份标识，可选值为1、2、3等数字,1表示LED灯1，2表示LED灯2，3表示LED灯3等等根据实际情况来
             action: 操作类型，"on"表示打开，"off"表示关闭
         """
         try:
@@ -52,7 +51,7 @@ class Tools:
             return f"LED控制出错: {str(e)}"
 
     @staticmethod
-    @tool
+
     def control_buzzer(action: str = "on") -> str:
         """蜂鸣器控制: 打开或关闭当前设备的蜂鸣器开关。
         
@@ -88,7 +87,7 @@ class Tools:
             return f"蜂鸣器控制出错: {str(e)}"
 
     @staticmethod
-    @tool
+
     def control_fan(action: str = "on") -> str:
         """风扇控制: 打开或关闭当前设备的风扇开关。
         
@@ -123,7 +122,7 @@ class Tools:
             return f"风扇控制出错: {str(e)}"
 
     @staticmethod
-    @tool
+
     def shutdown_voice_system() -> str:
         """语音系统关闭: 关闭当前的语音设备。"""
         try:
@@ -144,7 +143,7 @@ class Tools:
             return f"语音系统关闭出错: {str(e)}"
 
     @staticmethod
-    @tool
+
     def display_text(content: int|str) -> str:
         """数字、字符显示: 显示数字或字符。
         

@@ -12,6 +12,7 @@ from models.models import Models,ALI_TONGYI_DEEPSEEK_V3_2,ALI_TONGYI_DEEPSEEK_V3
 from utils.mqtt_client import MQTTClient
 
 app = FastAPI()
+
 class ChatRequest(BaseModel):
     model: str = ALI_TONGYI_DEEPSEEK_V3
     message: str
@@ -45,5 +46,6 @@ def chat(request: ChatRequest):
         }
 if __name__ == "__main__":
     setup_logger()
+
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
